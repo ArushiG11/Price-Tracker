@@ -81,7 +81,32 @@ const ProductDetails = async ({params: {id}}: Props) => {
                     </p>
                 )}
                 </div>
-                
+                <div>
+                    <div className="flex gap-3">
+                        <div className="product-stars">
+                            <Image 
+                                src='/assets/icons/star.svg' 
+                                alt='star' 
+                                width={20}
+                                height={20} 
+                            />
+                            <p className="text-sm font-semibold text-[#929BA9]">
+                                {product.stars||'20'}
+                            </p>
+                        </div>
+                        <div className="product-reviews">
+                            <Image 
+                                src='/assets/icons/comment.svg' 
+                                alt='star' 
+                                width={20}
+                                height={20} 
+                            />
+                            <p className="text-sm font-semibold text-[#929BA9]">
+                                {product.reviewsCount} Reviews
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
       </div>
