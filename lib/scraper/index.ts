@@ -43,17 +43,14 @@ export async function scrapeAmazonProduct(url: string){
         const reviewsText = $('#acrCustomerReviewText').text().trim();
         const reviewsCount = parseInt(reviewsText.replace(/[^\d]/g, ''), 10);
         const stars = $('#acrPopover').attr('title');
-        const starsCountMatch = stars.match(/^(\d+\.\d+)/);
-        var starsCount = 0;
-        if (starsCountMatch) {
-            starsCount = starsCountMatch[0]; // Output the rating, e.g., "4.7"
-        } 
+        const starsCount = stars ? parseFloat(stars.match(/^(\d+\.\d+)/)?.[0] ?? '0') : 0;
+
         // Construct data object with scraped information
         const data = {
             url,
             currency: currency || '$',
             image: imageUrls[0],
-            title,
+            title: title,
             currentPrice: Number(currentPrice) || Number(originalPrice),
             originalPrice: Number(originalPrice) || Number(currentPrice),
             priceHistory: [],
@@ -62,13 +59,12 @@ export async function scrapeAmazonProduct(url: string){
             reviewsCount:reviewsCount,
             stars: starsCount,
             isOutOfStock: outOfStock,
-            description,
+            description: description,
             lowestPrice: Number(currentPrice) || Number(originalPrice),
             highestPrice: Number(originalPrice) || Number(currentPrice),
             averagePrice: Number(currentPrice) || Number(originalPrice),
         }
         
-        // console.log(data);
         return data;
 
     }

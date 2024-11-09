@@ -50,8 +50,8 @@ const Home = () => {
 
         <div className="flex flex-wrap gap-x-8 gap-y-16">
           {['Iphone', 'Airposd', 'Insax Cam'].map(
-            (product)=>(
-              <div>{product}</div>
+            (product, index)=>(
+              <div key = {index}>{product}</div>
             )
           )}
         </div>
