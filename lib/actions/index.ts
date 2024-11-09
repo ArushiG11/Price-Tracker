@@ -58,7 +58,22 @@ export async function scrape_and_store_products(product_url: string){
 export async function getProducts(productId: string) {
     try {
         connectToDB();
-        const products = await Product.find({});
+        const product = await Product.findOne({_id: productId});
+
+        if(!product) return null;
+        return product;
+    }
+    catch (error: any) {
+        throw new Error(`Failed to fetch products : ${error.message}`);
+    }
+}
+
+// we can also get all products from the db
+
+export async function getAllProducts() {
+    try {
+        connectToDB();
+        const products = await Product.find();
         return products;
     }
     catch (error: any) {
