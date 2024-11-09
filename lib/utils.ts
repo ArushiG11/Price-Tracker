@@ -12,7 +12,7 @@ const THRESHOLD_PERCENTAGE = 40;
 // Extracts and returns the price from a list of possible elements.
 export function extractPrice(...elements: any) {
   for (const element of elements) {
-    const priceText = element.text().trim();
+    const priceText = element.first().text().trim();
 
     if(priceText) {
       const cleanPrice = priceText.replace(/[^\d.]/g, '');
