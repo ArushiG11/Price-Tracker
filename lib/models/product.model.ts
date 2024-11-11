@@ -19,10 +19,9 @@ const productSchema = new mongoose.Schema({
     stars: {type: Number},
     isOutOfStock: {type: Boolean, default: false},
     description: {type: String},
-    users: [{
-        type: String,
-        required: true
-    }], default: [],
+    users: [
+        {email: { type: String, required: true}}
+      ], default: [],
 }, {timestamps:true});
 
 const Product = mongoose.models.Product || mongoose.model('Product', productSchema);

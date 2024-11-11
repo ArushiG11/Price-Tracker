@@ -6,6 +6,10 @@ import Product from "../models/product.model";
 import { connectToDB } from "../mongoose";
 import { scrapeAmazonProduct } from "../scraper";
 import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
+import { use } from "react";
+import { User } from "@/types";
+import { send } from "process";
+import { generateEmailBody, sendEmail } from "../nodemailer";
 
  //all the code written here will run only on server
 
@@ -92,3 +96,26 @@ export async function getSimilarProducts(productId: string) {
         throw new Error(`Failed to fetch products : ${error.message}`);
     }
 }
+
+
+export async function addEmailtoProduct(productId: string, userEmail: string) {
+    try {
+      const product = await Product.findById(productId);
+  
+      if(!product) return;
+  
+      const userExists = product.users.some((user: User) => user.email === userEmail);
+  
+      if(!userExists) {
+        product.users.push({ email: userEmail });
+  
+        await product.save();
+  
+        const emailContent = await generateEmailBody(product, "WELCOME");
+  
+        await sendEmail(emailContent, [userEmail]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
