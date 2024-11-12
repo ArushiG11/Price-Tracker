@@ -10,9 +10,9 @@ import Modal from "@/components/Modal";
 
 type Props = Awaited<{ params: { id: string } }>;
 
-const ProductDetails = async ({ params }: Props) => {
-  const { id } = params;
+const ProductDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
 
+  const { id } = await params;
   const product: Product = await getProducts(id);
 
   if (!product) {
