@@ -1,31 +1,35 @@
-**Next.js Practice Application**
+# Next.js Practice Application
+
 This project is a practice application built with Next.js, created while following a tutorial by JS Mastery. It serves as an educational project to learn and explore Next.js features, including routing, server-side rendering, API integration, and dynamic routing.
 
-**Features**
-1. Dynamic Routing: Navigate through product details using dynamic routes.
-2. Server-Side Rendering (SSR): Fetch product data server-side for efficient, SEO-friendly pages.
-3. API Integration: Interact with a sample API to retrieve product details and similar items.
-4. Reusable Components: Modular components like PriceInfoCard and ProductCard are designed for easy reuse and maintainability.
+## Features
 
-**Technologies Used**
-Next.js - React framework for production-ready applications
-TypeScript - Static typing to improve development reliability
-MongoDB - Database for storing product data and user information
-CSS Modules/Tailwind CSS - Customizable styling options
+- **Dynamic Routing:** Navigate through product details using dynamic routes.
+- **Server-Side Rendering (SSR):** Fetch product data server-side for efficient, SEO-friendly pages.
+- **API Integration:** Interact with a sample API to retrieve product details and similar items.
+- **Reusable Components:** Modular components like `PriceInfoCard` and `ProductCard` are designed for easy reuse and maintainability.
 
-**Setup**
-Clone this repository and navigate into the directory.
-Install dependencies with npm install.
-Set up a MongoDB database and add your MongoDB connection URI in .env.local.
-Run npm run dev to start the development server.
+## Technologies Used
 
-**Usage**
+- **Next.js** - React framework for production-ready applications
+- **TypeScript** - Static typing to improve development reliability
+- **MongoDB** - Database for storing product data and user information
+- **CSS Modules/Tailwind CSS** - Customizable styling options
+
+## Setup
+
+1. Clone this repository and navigate into the directory.
+2. Install dependencies with:
+3. Set up a MongoDB database and add your MongoDB connection URI in .env.local.
+4. Run npm run dev to start the development server.
+
+## Usage
 Browse through a catalog of products, view detailed information, and see similar product suggestions. Use this app as a template or learning reference for future Next.js projects.
 
 **Acknowledgements**
 Thanks to JS Mastery for the tutorial that inspired this project.
 
-Link: https://price-tracker-roan.vercel.app/
+## Link: https://price-tracker-roan.vercel.app/
 
 ![image](https://github.com/user-attachments/assets/6d5e71ff-0b4f-4d85-a0c4-093b315150e2)
 
