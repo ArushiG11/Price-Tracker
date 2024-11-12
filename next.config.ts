@@ -2,7 +2,8 @@
 const nextConfig = {
   experimental: {
     serverActions: true,
-    serverComponentsExternalPackages: ['mongoose']
+    serverComponentsExternalPackages: ['mongoose'],
+    appDir: true,
   },
   images: {
     domains: ['m.media-amazon.com']
