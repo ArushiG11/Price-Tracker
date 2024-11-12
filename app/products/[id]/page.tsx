@@ -8,16 +8,16 @@ import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
 import Modal from "@/components/Modal";
 
-type Props = {
-    params: { id: string }
-  }
+const ProductDetails = async ({ params }: { params: { id: string } }) => {
+    const { id } = params;
   
-  const ProductDetails = async ({ params: { id } }: Props) => {
-
     const product: Product = await getProducts(id);
-
-    if(!product) redirect('/')
-
+  
+    if (!product) {
+      redirect('/');
+      return null;
+    }
+  
     const similarProducts = await getSimilarProducts(id);
 
   return (
