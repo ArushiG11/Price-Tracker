@@ -10,6 +10,7 @@ const Notification = {
   THRESHOLD_MET: 'THRESHOLD_MET',
 }
 
+
 export async function generateEmailBody(
   product: EmailProductInfo,
   type: NotificationType
@@ -81,19 +82,18 @@ export async function generateEmailBody(
 }
 
 const transporter = nodemailer.createTransport({
-  pool: true,
-  service: 'Outlook',
-  port: 2525,
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
-    user: 'arushig2025@outlook.com' ,
+    user: process.env.EMAIL_ACCOUNT_NAME ,
     pass: process.env.EMAIL_PASSWORD,
   },
-  maxConnections: 1
 })
 
 export const sendEmail = async (emailContent: EmailContent, sendTo: string[]) => {
   const mailOptions = {
-    from: 'arushig2025@outlook.com' ,
+    from: process.env.EMAIL_ACCOUNT_NAME ,
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
