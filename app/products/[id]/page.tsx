@@ -8,15 +8,15 @@ import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
 import Modal from "@/components/Modal";
 
-const ProductDetails = async ({ params }: { params: { id: string } }) => {
+type Props = {
+    params: { id: string }
+  }
+  
+  const ProductDetails = async ({ params: { id } }: Props) => {
 
-    const { id } = params;
-    const product: Product | null = await getProducts(id);
+    const product: Product = await getProducts(id);
 
-    if (!product) {
-        redirect('/');
-        return null; // Return null to satisfy TypeScript, as redirect does not return a value
-      }
+    if(!product) redirect('/')
 
     const similarProducts = await getSimilarProducts(id);
 
